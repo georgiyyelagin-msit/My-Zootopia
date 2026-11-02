@@ -12,13 +12,14 @@ def key_present_in_dictionary(key, dictionary):
 def get_animals_infos_json_as_string(json_string ):
   output=""
   for item in json_string:
-
-    output +=  f"Name: {item["name"]}\n"
-    output += f"Diet: {item["characteristics"]["diet"]}\n"
-    output += f"Location: {item["locations"][0]}\n"
+    output += "<li class=\"cards__item\">"
+    output +=  f"Name: {item["name"]}<br/>\n"
+    output += f"Diet: {item["characteristics"]["diet"]}<br/>\n"
+    output += f"Location: {item["locations"][0]}<br/>\n"
 
     if key_present_in_dictionary("type", item["characteristics"] ) :
-      output +=  f"Type: {item["characteristics"]["type"]}\n"
+      output +=  f"Type: {item["characteristics"]["type"]}<br/>\n"
+    output += "</li>"
   return output
 
 
