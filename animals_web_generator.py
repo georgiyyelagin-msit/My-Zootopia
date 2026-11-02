@@ -13,16 +13,22 @@ def key_present_in_dictionary(key, dictionary):
 def get_animals_infos_json_as_string(json_string ):
   output=""
   for item in json_string:
-    output += "<li class=\"cards__item\">"
-    output +=  f"<div class=\"card__title\">{item["name"]}</div>\n"
-    output += "<p class=\"card__text\">"
-    output += f"<strong>Diet:</strong> {item["characteristics"]["diet"]}<br/>\n"
-    output += f"<strong>Location:</strong> {item["locations"][0]}<br/>\n"
+    output += serialize_animal(item)
+  return output
 
-    if key_present_in_dictionary("type", item["characteristics"] ) :
-      output +=  f"<strong>Type:</strong> {item["characteristics"]["type"]}<br/>\n"
-    output +="  </p>"
-    output += "</li>"
+
+def serialize_animal(animal_obj):
+  output = ""
+  output += "<li class=\"cards__item\">"
+  output += f"<div class=\"card__title\">{animal_obj["name"]}</div>\n"
+  output += "<p class=\"card__text\">"
+  output += f"<strong>Diet:</strong> {animal_obj["characteristics"]["diet"]}<br/>\n"
+  output += f"<strong>Location:</strong> {animal_obj["locations"][0]}<br/>\n"
+
+  if key_present_in_dictionary("type", animal_obj["characteristics"]):
+    output += f"<strong>Type:</strong> {animal_obj["characteristics"]["type"]}<br/>\n"
+  output += "  </p>"
+  output += "</li>"
   return output
 
 
