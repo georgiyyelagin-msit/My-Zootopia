@@ -13,12 +13,14 @@ def get_animals_infos_json_as_string(json_string ):
   output=""
   for item in json_string:
     output += "<li class=\"cards__item\">"
-    output +=  f"Name: {item["name"]}<br/>\n"
-    output += f"Diet: {item["characteristics"]["diet"]}<br/>\n"
-    output += f"Location: {item["locations"][0]}<br/>\n"
+    output +=  f"<div class=\"card__title\">{item["name"]}</div>\n"
+    output += "<p class=\"card__text\">"
+    output += f"<strong>Diet:</strong> {item["characteristics"]["diet"]}<br/>\n"
+    output += f"<strong>Location:</strong> {item["locations"][0]}<br/>\n"
 
     if key_present_in_dictionary("type", item["characteristics"] ) :
-      output +=  f"Type: {item["characteristics"]["type"]}<br/>\n"
+      output +=  f"<strong>Type:</strong> {item["characteristics"]["type"]}<br/>\n"
+    output +="  </p>"
     output += "</li>"
   return output
 
